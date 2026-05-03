@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WHEREAMI — Know What Sites Know About You</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <div class="scanline-overlay"></div>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">
+        <span class="logo-bracket">[</span>
+        <span class="logo-text">WHERE<span class="logo-accent">AM</span>I</span>
+        <span class="logo-bracket">]</span>
+      </div>
+      <p class="header-sub">An open-source awareness project — know exactly what every website knows about you the moment you visit.</p>
+    </div>
+    <div class="header-warning">
+      <span class="pulse-dot"></span>
+      <span>LIVE DATA SCAN IN PROGRESS — NO PERMISSIONS REQUESTED</span>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero-section">
+      <div class="terminal-window">
+        <div class="terminal-bar">
+          <span class="t-btn t-red"></span>
+          <span class="t-btn t-yellow"></span>
+          <span class="t-btn t-green"></span>
+          <span class="t-title">whereami ~ data-scan</span>
+        </div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="terminal-line"><span class="t-prompt">$</span> <span class="t-cmd">initializing scan...</span></div>
+          <div id="terminalOutput"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cards-grid" id="dataCards">
+
+      <div class="card card--highlight" id="card-ip">
+        <div class="card-icon">🌐</div>
+        <div class="card-label">Your IP Address</div>
+        <div class="card-value skeleton" id="val-ip">Scanning...</div>
+        <div class="card-meta" id="val-ip-type">—</div>
+      </div>
+
+      <div class="card" id="card-location">
+        <div class="card-icon">📍</div>
+        <div class="card-label">Exact Location</div>
+        <div class="card-value skeleton" id="val-location">Scanning...</div>
+        <div class="card-meta" id="val-coords">—</div>
+      </div>
+
+      <div class="card" id="card-isp">
+        <div class="card-icon">🏢</div>
+        <div class="card-label">ISP / Organization</div>
+        <div class="card-value skeleton" id="val-isp">Scanning...</div>
+        <div class="card-meta" id="val-asn">—</div>
+      </div>
+
+      <div class="card" id="card-timezone">
+        <div class="card-icon">🕐</div>
+        <div class="card-label">Timezone / Local Time</div>
+        <div class="card-value skeleton" id="val-timezone">Scanning...</div>
+        <div class="card-meta" id="val-localtime">—</div>
+      </div>
+
+      <div class="card" id="card-browser">
+        <div class="card-icon">🖥️</div>
+        <div class="card-label">Browser & OS</div>
+        <div class="card-value skeleton" id="val-browser">Scanning...</div>
+        <div class="card-meta" id="val-os">—</div>
+      </div>
+
+      <div class="card" id="card-device">
+        <div class="card-icon">📱</div>
+        <div class="card-label">Device & Screen</div>
+        <div class="card-value skeleton" id="val-device">Scanning...</div>
+        <div class="card-meta" id="val-screen">—</div>
+      </div>
+
+      <div class="card" id="card-language">
+        <div class="card-icon">🌍</div>
+        <div class="card-label">Language & Region</div>
+        <div class="card-value skeleton" id="val-language">Scanning...</div>
+        <div class="card-meta" id="val-region">—</div>
+      </div>
+
+      <div class="card" id="card-network">
+        <div class="card-icon">🔒</div>
+        <div class="card-label">Connection Type</div>
+        <div class="card-value skeleton" id="val-network">Scanning...</div>
+        <div class="card-meta" id="val-proxy">—</div>
+      </div>
+
+      <div class="card card--map" id="card-map">
+        <div class="card-icon">🗺️</div>
+        <div class="card-label">Approximate Map Position</div>
+        <div id="mapContainer">
+          <div class="map-loading" id="mapLoading">Loading map...</div>
+          <iframe id="mapFrame" src="" title="Location map" style="display:none;"></iframe>
+        </div>
+      </div>
+
+    </section>
+
+    <section class="threat-section">
+      <h2 class="section-title">
+        <span class="title-icon">⚠️</span> What This Means For You
+      </h2>
+      <div class="threat-grid">
+        <div class="threat-card">
+          <div class="threat-num">01</div>
+          <h3>No Permission Needed</h3>
+          <p>Your IP address, general location, browser, operating system, screen size, and language are all collected <strong>automatically</strong> the moment you load any webpage — no popups, no consent buttons, nothing. Every website on the internet does this.</p>
+        </div>
+        <div class="threat-card">
+          <div class="threat-num">02</div>
+          <h3>Targeted Attacks</h3>
+          <p>Malicious actors use your IP data to craft geographically targeted phishing emails, fake bank pages, and scam calls that sound legitimate because they mention <strong>your city, your ISP, or your region</strong>. Familiarity breeds trust — and exploits it.</p>
+        </div>
+        <div class="threat-card">
+          <div class="threat-num">03</div>
+          <h3>Browser Fingerprinting</h3>
+          <p>Combining your browser version, OS, screen resolution, timezone, and language creates a near-unique <strong>"fingerprint"</strong> that can track you across the web — even in private/incognito mode — without any cookies.</p>
+        </div>
+        <div class="threat-card">
+          <div class="threat-num">04</div>
+          <h3>ISP-Level Surveillance</h3>
+          <p>Your Internet Service Provider (ISP) can see every domain you visit. In many countries, ISPs are legally required to <strong>log and retain this data</strong> and hand it over to authorities — or sell anonymized versions to advertisers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="protect-section">
+      <h2 class="section-title">
+        <span class="title-icon">🛡️</span> How To Protect Yourself
+      </h2>
+      <div class="protect-grid">
+        <div class="protect-item">
+          <div class="protect-icon">🔐</div>
+          <h3>Use a Trusted VPN</h3>
+          <p>A VPN (Virtual Private Network) masks your real IP address by routing your traffic through an encrypted server in another location. Choose audited, no-log providers like <strong>Mullvad</strong> or <strong>ProtonVPN</strong>.</p>
+        </div>
+        <div class="protect-item">
+          <div class="protect-icon">🧅</div>
+          <h3>Use Tor Browser</h3>
+          <p>The Tor Browser routes your traffic through multiple encrypted relays across the world, making it extremely difficult to trace your real IP or location. Ideal for maximum anonymity.</p>
+        </div>
+        <div class="protect-item">
+          <div class="protect-icon">🦊</div>
+          <h3>Use a Privacy Browser</h3>
+          <p>Firefox with uBlock Origin, Brave Browser, or LibreWolf significantly reduce fingerprinting, tracker scripts, and data leaks compared to mainstream browsers.</p>
+        </div>
+        <div class="protect-item">
+          <div class="protect-icon">🔎</div>
+          <h3>Use Private Search Engines</h3>
+          <p>Switch to <strong>DuckDuckGo</strong>, <strong>Startpage</strong>, or <strong>SearXNG</strong>. Google and Bing log every search query and tie it to your account, IP, and device fingerprint.</p>
+        </div>
+        <div class="protect-item">
+          <div class="protect-icon">📵</div>
+          <h3>Avoid Sketchy Links</h3>
+          <p>A single visit to a malicious page is enough to capture your IP and device data. Always check URLs carefully, avoid shortened links, and never open email attachments from unknown senders.</p>
+        </div>
+        <div class="protect-item">
+          <div class="protect-icon">🧩</div>
+          <h3>Use DNS-over-HTTPS</h3>
+          <p>Enable encrypted DNS in your browser or OS settings (Cloudflare <strong>1.1.1.1</strong> or NextDNS) to prevent your ISP from snooping on the domains you visit via unencrypted DNS queries.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="section-title"><span class="title-icon">❓</span> Common Questions</h2>
+      <div class="faq-list" id="faqList">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is this site storing my data?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. WHEREAMI is a 100% static, client-side project hosted on GitHub Pages. There is no server, no database, and no logging. All data is fetched from a public IP geolocation API and displayed only in your browser — nothing is sent back to us.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is my exact home address visible?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. IP geolocation is accurate to the city or district level in most cases. Your precise street address is not obtainable through your IP alone. However, it can point to your neighbourhood, especially if you are on a fixed home connection.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What if I'm already using a VPN?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>If your VPN is active, the IP address and location shown here will belong to your VPN exit server — not your real location. This is exactly how a VPN should work. You can use WHEREAMI to verify your VPN is functioning correctly.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can private/incognito mode hide my data?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Incognito mode only prevents your browser from saving history and cookies locally on your device. It does NOT hide your IP address, browser fingerprint, or any of the data shown on this page from websites you visit.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do hackers use this information?
+            <span class="faq-arrow">▼</span>
+          </button>
+          <div class="faq-answer">
+            <p>Attackers use IP data for geographically targeted phishing, DDoS attacks (flooding your IP with traffic), social engineering (mentioning your city to gain trust), and correlating with other leaked data to build a profile of you.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">[WHEREAMI]</div>
+      <p class="footer-desc">An open-source digital awareness project. Built with ❤️ for privacy education.</p>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <span class="footer-sep">·</span>
+        <a href="README.md" target="_blank" rel="noopener noreferrer">README</a>
+        <span class="footer-sep">·</span>
+        <a href="https://www.eff.org/issues/privacy" target="_blank" rel="noopener noreferrer">EFF Privacy</a>
+      </div>
+      <p class="footer-legal">This project is open source under the MIT License. Data is fetched from public APIs for educational purposes only. No user data is stored or transmitted to any server owned by this project.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
